@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +15,86 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <!-- Body start -->
+
 <body>
-    <div class="jumbotron">Doors Closing</div>
+    <div class="jumbotron">
+        <h1>Doors Closing</h1>
+        <p><i>A Train Scheduling Web Application</i></p>
+    </div>
+    <div class="container-fluid">
+        <!-- Current Train Schedule -->
+        <div class="row">
+            <div class="col-md-12" id="currentSched">
+                <header>Current Train Schedule</header>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Train Name</th>
+                            <th>Destination</th>
+                            <th>Frequency (min.)</th>
+                            <th>Next Arrival</th>
+                            <th>Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>####</td>
+                            <td>####</td>
+                            <td>####</td>
+                            <td>####</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>####</td>
+                            <td>####</td>
+                            <td>####</td>
+                            <td>####</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>####</td>
+                            <td>####</td>
+                            <td>####</td>
+                            <td>####</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Add Train -->
+        <div class="row">
+            <div class="col-md-12" id="addTrain">
+                <header>Add Train</header>
+                <form class="trainForm">
+                    <p>Train Name:
+                        <br>
+                        <input type="text">
+                    </p>
+                    <br>
+                    <p>Destination:
+                        <br>
+                        <input type="text">
+                    </p>
+                    <br>
+                    <p>First Train Time (hh:mm - Military Time):
+                        <br>
+                        <input type="text">
+                    </p>
+                    <br>
+                    <p>Frequency (min):
+                        <br>
+                        <input type="text">
+                    </p>
+                    <br>
+                    <input class="btn btn-general" id="submitBtn" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
     <script>
-        
     </script>
     <script src="assets/javascript/game.js"></script>
 </body>
+
 </html>
