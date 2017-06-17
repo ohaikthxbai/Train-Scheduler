@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doors Closing</title>
+    <!-- jQuery-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- linkt to style sheet -->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- Might want to add jQuery link if I decide to use it-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <!-- Body start -->
 
@@ -25,7 +25,7 @@
         <!-- Current Train Schedule -->
         <div class="row">
             <div class="col-md-12" id="currentSched">
-                <header>Current Train Schedule</header>
+                <div class="panel panel-heading">Current Train Schedule</div>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -36,59 +36,35 @@
                             <th>Minutes Away</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- <tr>
-                            <th scope="row">1</th>
-                            <td>####</td>
-                            <td>####</td>
-                            <td>####</td>
-                            <td>####</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>####</td>
-                            <td>####</td>
-                            <td>####</td>
-                            <td>####</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>####</td>
-                            <td>####</td>
-                            <td>####</td>
-                            <td>####</td>
-                        </tr> -->
-                    </tbody>
+                    <tbody id="tData"></tbody>
                 </table>
             </div>
         </div>
         <!-- Add Train -->
         <div class="row">
             <div class="col-md-12" id="addTrain">
-                <header>Add Train</header>
-                <form class="trainForm">
+                <div class="panel panel-heading">Add Train</div>
                     <p>Train Name:
                         <br>
-                        <input type="text">
+                        <input type="text" id="trainName">
                     </p>
                     <br>
                     <p>Destination:
                         <br>
-                        <input type="text">
+                        <input type="text" id="trainDestination">
                     </p>
                     <br>
                     <p>First Train Time (hh:mm - Military Time):
                         <br>
-                        <input type="text">
+                        <input type="text" id="firstTrainTime">
                     </p>
                     <br>
                     <p>Frequency (min):
                         <br>
-                        <input type="text">
+                        <input type="text" id="trainFrequency">
                     </p>
                     <br>
                     <input class="btn btn-general" id="submitBtn" type="submit">
-                </form>
             </div>
         </div>
     </div>
