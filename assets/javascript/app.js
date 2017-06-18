@@ -1,16 +1,4 @@
- /* 
 
-  PSEUDO STUFF 
-  - create train object?
-  - have user input information into addTrain
-  - when the submit button is clicked, information is stored into database
-    and updates the table, dynamically...?
-  - initial load page will be empty
-  - once user(s) start entering information and submitting it, 
-  - new table rows should appear with the appropriate information
-
-
-  */
  // Initialize Firebase
  var config = {
      apiKey: "AIzaSyDJUuDt4seJJRciTZcqVKPSVgWN39NdNus",
@@ -33,6 +21,12 @@
  var frequency = "";
  var nextArrival = "";
  var minAway = "";
+ var timeConverted = "";
+ var currentTime = "";
+ var diffTime = "";
+ var timeRemainder = "";
+ var nextArrivalFormatted = "";
+
 
  // onClick event
  $("#submitBtn").on("click", function(event) {
@@ -40,13 +34,16 @@
 
      // Setting the values to the variables
      name = $("#trainName").val().trim();
-     //console.log(name);
      destination = $("#trainDestination").val().trim();
-     //console.log(destination);
      trainTime = $("#firstTrainTime").val().trim();
-     //console.log(trainTime);
      frequency = $("#trainFrequency").val().trim();
-     //console.log(frequency);
+     trainTimeConverted = moment(trainTime, "hh:mm").subtract(1, "years");
+     currentTime = moment();
+     diffTime = moment().diff(moment(trainTimeConverted), "minutes");
+     timeRemainder = diffTime % frequency;
+     minAway = frequency - timeRemainder;
+     nextArrival = moment().add(minAway, "minutes");
+     nextArrivalFormatted = moment(nextArrival).format("hh:mm");
 
      // Referencing and pushing the key value pairs for Firebase
      database.ref().push({
@@ -54,26 +51,19 @@
          tDest: destination,
          tTime: trainTime,
          tFreq: frequency,
+         tArrival: nextArrivalFormatted,
+         tMin: minAway
      });
 
      // not understarting child_added
      database.ref().on("child_added", function(snapshot) {
-        // TESTING
-        //console.log(snapshot.val());
+         // TESTING
+         //console.log(snapshot.val());
 
-        // set the snapshot to a variable
-        var snapValue = snapshot.val();   
-        
-        // get array of the keys in object
-        //var snapArray = Object.keys(snapValue);
-        //console.log(snapArray);
-        //console.log(snapArray.name);
+         // set the snapshot to a variable
+         var snapValue = snapshot.val();
 
-        // There's gotta be a better way than this
-         $("#tData").append('<tr><td>'+snapValue.tName+'</td><td>'+snapValue.tDest+'</td><td>'+snapValue.tTime+'</td><td>'+snapValue.tFreq+'</td></tr>');
-        
-        //$("#tData").append('<td>'+snapValue.Dest+'</td>');
-        //$('#tTime').append(snapValue.tName);
-
-    });
-});     
+         // There's gotta be a better way than this
+         $("#tData").append('<tr><td>' + snapValue.tName + '</td><td>' + snapValue.tDest + '</td><td>' + snapValue.tFreq + '</td><td>' + snapValue.tArrival + '</td><td>' + snapValue.tMin + '</td></tr>');
+     });
+ });

@@ -8,16 +8,18 @@
 }
 
 .row {
-	border: solid 1px #000000;
 	margin: 30px 0px;
 }
 
 .col-md-12 {
 	padding: 0px;
+	border: solid 1px #098345;
 }
 
-header {
-	background-color: #098345;
+
+
+.panel {
+	background-color: #098345; /* typed in random numbers */
 	color: #FFFFFF;
 	padding: 10px;
 }
